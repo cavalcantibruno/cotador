@@ -1,33 +1,35 @@
 # Simulador de Crédito
 
-## Instruções de setup.
+## Instruções de Setup
 
->[!PREREQUISITES]
-> 
-> Esse é um projeto simples desenvolvido em Java (Maven) com Spring Boot.
-> - Java Version: 17
-> - Spring Boot Version: 3.4.5
+> **Pré-requisitos**  
+> Projeto simples desenvolvido em Java (Maven) com Spring Boot.
+> - **Java Version:** 17
+> - **Spring Boot Version:** 3.4.5
 
-Parar rodar o projeto local é interessante que você tenha alguma IDE instalada e configurada 
-na máquina. Pode ser um [IntelliJ](https://www.jetbrains.com/pt-br/idea/), [VSCode](https://code.visualstudio.com/download) ou outra de sua preferência. 
+Para rodar o projeto localmente, é interessante que você tenha alguma IDE instalada e configurada na máquina. Pode ser o [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/), [VSCode](https://code.visualstudio.com/download) ou outra de sua preferência.
 
-_Sugestão: O **IntelliJ IDEA** oferece um rico conjunto de ferramentas de desenvolvimento integradas e suporte ao framework Spring, 
-tanto para código em Java quanto em Kotlin, incluindo Spring MVC, Spring Boot, Spring Integration, Spring Security e Spring Cloud._     
+> 💡 **Sugestão:**  
+> O **IntelliJ IDEA** oferece um rico conjunto de ferramentas de desenvolvimento integradas e suporte ao framework Spring, tanto para código em Java quanto em Kotlin, incluindo Spring MVC, Spring Boot, Spring Integration, Spring Security e Spring Cloud.
+
+### Executando com Docker
 
 Para executar o projeto com **Docker**, utilize o comando abaixo:
 
-~~~Bash
+```bash
 docker-compose up --build
-~~~
+```
 
-## Exemplos de requisições para os endpoints.
+---
+
+## Exemplos de Requisições para os Endpoints
 
 ### Endpoint: `/api/v1/cotacao/sync/simular`
 
 - **Método:** `POST`
-- **Descrição:** Realiza simulação de emprestimo de forma sincrona.
+- **Descrição:** Realiza simulação de empréstimo de forma síncrona.
 
-### Requisição
+#### Exemplo de Requisição
 
 ```json
 {
@@ -35,11 +37,11 @@ docker-compose up --build
   "dataNascimento": "1985-09-20",
   "prazo": 24,
   "email": "anakin.skywalker@outlook.com",
-  "nome": "Anakin "
+  "nome": "Anakin"
 }
 ```
 
-### Resposta
+#### Exemplo de Resposta
 
 ```json
 {
@@ -53,12 +55,14 @@ docker-compose up --build
 }
 ```
 
+---
+
 ### Endpoint: `/api/v1/cotacao/async/simular`
 
 - **Método:** `POST`
-- **Descrição:** Realiza simulação de emprestimo em lote de forma assincrona.
+- **Descrição:** Realiza simulação de empréstimo em lote de forma assíncrona.
 
-### Requisição
+#### Exemplo de Requisição
 
 ```json
 [
@@ -86,7 +90,7 @@ docker-compose up --build
 ]
 ```
 
-### Resposta
+#### Exemplo de Resposta
 
 ```json
 {
@@ -95,19 +99,27 @@ docker-compose up --build
 }
 ```
 
-## Explicação sobre a estrutura do projeto e decisões de arquitetura.
+---
+
+## Estrutura do Projeto e Decisões de Arquitetura
+
+**
+
+---
 
 ## TODO
 
--[X] Crie endpoints para: Simular um empréstimo. (Síncrono e Assíncrono)
--[X] Documentação Swagger (OpenAPI)
--[ ] Criação dos testes automatizados e de integração
--[ ] Executar teste de desempenho
--[ ] Submeta o código em um repositório Git
+### Funcionalidades
+
+- [x] Criar endpoints para simular um empréstimo (Síncrono e Assíncrono)
+- [x] Documentação Swagger (OpenAPI)
+- [ ] Criação dos testes automatizados e de integração
+- [ ] Executar teste de desempenho
+- [ ] Submeter o código em um repositório Git
 
 ### Bônus
 
--[X] Implementar notificação por email com os resultados da simulação.
--[ ] Adicionar suporte para diferentes cenários de taxa de juros (fixa e variável).
--[X] Criar um Dockerfile e docker-compose para facilitar o setup da aplicação.
--[X] Adicionar suporte para diferentes moedas e conversão de taxas.
+- [x] Implementar notificação por email com os resultados da simulação
+- [ ] Adicionar suporte para diferentes cenários de taxa de juros (fixa e variável)
+- [x] Criar um Dockerfile e docker-compose para facilitar o setup da aplicação
+- [x] Adicionar suporte para diferentes moedas e conversão de taxas
