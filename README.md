@@ -153,7 +153,7 @@ No contexto de APIs, a aplicação do padrão MVC foca principalmente nos models
 
 - [x] Criar endpoints para simular um empréstimo (Síncrono e Assíncrono)
 - [x] Documentação Swagger (OpenAPI)
-- [ ] Criação dos testes automatizados e de integração
+- [X] Criação dos testes automatizados e de integração
 - [ ] Executar teste de desempenho
 - [ ] Submeter o código em um repositório Git
 

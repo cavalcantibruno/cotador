@@ -33,8 +33,8 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
 
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
-            log.info(e.getMessage(), e.getCause());
+            log.error("Erro ao enviar email: {}", e.getMessage(), e);
+            throw new RuntimeException("Falha ao enviar email: " + e.getMessage(), e);
         }
-
     }
 }
