@@ -1,5 +1,25 @@
 # Simulador de Crédito
 
+---
+
+## Produção 
+
+O deploy em produção foi realizado utilizando os serviços da AWS: ECR (Elastic Container Registry), ECS (Elastic Container Service) e Fargate. 
+
+O ECR foi utilizado para armazenar e versionar as imagens Docker da aplicação, enquanto o ECS, em conjunto com o Fargate, foi responsável por orquestrar e executar os containers de forma totalmente gerenciada, sem a necessidade de provisionar servidores manualmente. 
+
+Um Application Load Balancer foi configurado para distribuir automaticamente o tráfego entre as tarefas do ECS, garantindo alta disponibilidade e escalabilidade do serviço. 
+
+Essa arquitetura foi escolhida por oferecer maior agilidade no deploy, escalabilidade automática e redução de esforço operacional na gestão da infraestrutura.
+
+#### URL: ` https://cotador.foop.com.br/`
+> ⚠️ Por questões de segurança, é permitido apenas o tráfego via protocolo HTTPS.
+
+- [Documentação Swagger](https://cotador.foop.com.br/api/swagger-ui/index.html#/) 
+- [Actuator Health](https://cotador.foop.com.br/api/actuator/health)
+
+---
+
 ## Instruções de Setup
 
 > **Pré-requisitos**  
@@ -154,8 +174,9 @@ No contexto de APIs, a aplicação do padrão MVC foca principalmente nos models
 - [x] Criar endpoints para simular um empréstimo (Síncrono e Assíncrono)
 - [x] Documentação Swagger (OpenAPI)
 - [X] Criação dos testes automatizados e de integração
-- [ ] Executar teste de desempenho
-- [ ] Submeter o código em um repositório Git
+- [X] Deploy AWS
+- [X] Executar teste de desempenho
+- [X] Submeter o código em um repositório Git
 
 ### Bônus
 

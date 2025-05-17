@@ -46,7 +46,7 @@ public class SpringDocConfig {
                                 .url("http://springdoc.com"))
                 ).servers(List.of(
                         new Server()
-                                .url("https://cotador-creditas.foop.com.br/api")
+                                .url("https://cotador.foop.com.br/api")
                                 .description("Produção"),
                         new Server()
                                 .url("http://localhost:8080/api")
