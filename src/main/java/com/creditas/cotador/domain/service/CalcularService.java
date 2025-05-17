@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Service
 public interface CalcularService {
-    double calcularTaxaDeJurosAnual(String dataNascimento);
-    BigDecimal calcularValorParcelaMensal(BigDecimal valorPresente, double taxaAnual, int meses);
+    double calcularTaxaDeJurosAnualPorIdade(String dataNascimento);
+    BigDecimal calcularComTaxaFixa(BigDecimal valorPresente, double taxaAnual, int meses);
+    BigDecimal calcularComTaxaVariavel(BigDecimal valorSolicitado, Double taxaAnual, int prazoEmMeses);
 }

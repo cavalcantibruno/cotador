@@ -28,6 +28,12 @@ docker-compose up --build
 
 - **Método:** `POST`
 - **Descrição:** Realiza simulação de empréstimo de forma síncrona.
+- **Parâmetros:** taxa _(Opcional)_ 
+
+> **Exemplos de parâmetros:**
+> * _TAXA_FIXA_ 
+> * _TAXA_SELIC_
+> * _TAXA_CDI_
 
 #### Exemplo de Requisição
 
@@ -103,7 +109,44 @@ docker-compose up --build
 
 ## Estrutura do Projeto e Decisões de Arquitetura
 
-**
+Para este projeto, optei por desenvolver uma API utilizando o padrão MVC (Model-View-Controller), com o objetivo de separar as responsabilidades da aplicação. Como manipulação de dados, lógica de negócios e tratamento de requisições e respostas. Essa abordagem torna o código mais organizado, testável e de fácil manutenção.
+
+No contexto de APIs, a aplicação do padrão MVC foca principalmente nos models e controllers, já que a view é tradicionalmente responsável pela interface visual torna-se menos relevante, uma vez que as APIs geralmente retornam dados no formato JSON, em vez de renderizar interfaces gráficas.
+
+📁 api 
+* Interage com o modelo para realizar as operações necessárias.
+* Formata a resposta da API, geralmente em formato JSON, e envia de volta ao cliente.
+* Mapeia as requisições para as ações corretas do modelo, controlando o fluxo da aplicação.
+
+
+    └── exceptionhandler : Centralizar o tratamento de exceções  - Armazena classes responsáveis por capturar e tratar exceções de forma padronizada em toda a aplicação.
+    └── v1 : Versão da API.
+       └── controller : Recebe as requisições (HTTP requests) da API.
+       └── dto : Os DTOs são usados para encapsular e transferir dados entre diferentes camadas (por exemplo, entre o controller e o service), evitando expor diretamente os modelos da base de dados.
+
+📁 config 
+
+* Responsavél por armazenar configurações da aplicação
+* Contém arquivos responsáveis por centralizar as definições que controlam o comportamento da aplicação.
+
+
+    └── filter : Separar responsabilidades transversais (cross-cutting concerns) Funções que afetam várias partes da aplicação (como CORS, compressão, monitoramento, etc.) são implementadas como filtros e organizadas nesta pasta.
+    └── springdoc : Armazena classes e arquivos relacionados à documentação automática da API usando o SpringDoc, uma integração do Spring Boot com OpenAPI (anteriormente Swagger).
+
+📁 domain
+
+* Representa os dados da aplicação, geralmente modelados em classes que refletem a estrutura dos dados a serem manipulados pela API.
+* Contém a lógica para interagir com o banco de dados, recuperar, salvar, atualizar ou excluir informações.
+* Pode incluir validações de dados e regras de negócio relacionadas à manipulação dos dados.
+
+
+    └── enums : Centralizar definições de constantes nomeadas
+    └── service : Encapsular a lógica de negócio da aplicação - A classe service concentra regras, cálculos, validações e qualquer outra lógica que não pertence diretamente ao controller nem ao repositório.
+
+📁 utils
+
+* Centralizar funções utilitárias - Armazena métodos ou classes com funcionalidades genéricas e reutilizáveis que não pertencem diretamente a uma camada específica do sistema.
+* Evitar repetição de código - Promove o reuso de lógica comum, como formatação de datas, validações simples, conversões, entre outros.
 
 ---
 
@@ -120,6 +163,6 @@ docker-compose up --build
 ### Bônus
 
 - [x] Implementar notificação por email com os resultados da simulação
-- [ ] Adicionar suporte para diferentes cenários de taxa de juros (fixa e variável)
+- [X] Adicionar suporte para diferentes cenários de taxa de juros (fixa e variável)
 - [x] Criar um Dockerfile e docker-compose para facilitar o setup da aplicação
 - [x] Adicionar suporte para diferentes moedas e conversão de taxas
